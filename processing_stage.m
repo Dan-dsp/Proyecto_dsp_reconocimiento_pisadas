@@ -1,6 +1,6 @@
 % data = read_footstep_trace_data(1, 1, 7, 1, 1);
 % read_footstep_trace_data(person_id, sensor_number, speed_scale, amplification, trace_number)
-data = read_footstep_trace_data(3, 1, 7, 1, 1);
+data = read_footstep_trace_data(1, 1, 7, 1, 1);
 
 % % Parameters
 % fs = 25600; % Sampling frequency (Hz)
@@ -9,7 +9,7 @@ fc = 200; % Cutoff frequency (Hz)
 time = 0 : 1/fs : (1/fs) * (length(data) - 1); % Time vector for 1 second of data
 
 % Call the antialiasing filter function
-filtered_data = antialiasing_filter(data, fs, fc);
+% filtered_data = antialiasing_filter(data, fs, fc);
 
 % % Plots the frequency's domain plot of the data signal
 % frequency_domain(data, fs)
@@ -32,6 +32,7 @@ filtered_data = antialiasing_filter(data, fs, fc);
 
 Simulink.sdi.clear;
 Simulink.sdi.plot(data, time);
-Simulink.sdi.plot(filtered_data, time);
+% Simulink.sdi.title('name');
+% Simulink.sdi.plot(filtered_data, time);
 
 
