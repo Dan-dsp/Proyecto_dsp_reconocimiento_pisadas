@@ -31,8 +31,8 @@ time = 0 : 1/fs : (1/fs) * (length(data) - 1); % Time vector for 1 second of dat
 % ylabel('Amplitude');
 
 Simulink.sdi.clear;
-Simulink.sdi.plot(data, time);
-% Simulink.sdi.title('name');
+Simulink.sdi.plot(data, time).title('AAAA');
+% Simulink.sdi.plot().title('AAAA');
 % Simulink.sdi.plot(filtered_data, time);
 
 
