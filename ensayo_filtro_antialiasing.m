@@ -10,7 +10,10 @@ time = 0 : 1/fs : (1/fs) * (length(data) - 1); % Time vector for 1 second of dat
 % Call the antialiasing filter function
 filtered_data = antialiasing_filter(data, fs, fc);
 
+% Plots the frequency's domain plot of the data signal
 frequency_domain(data, fs)
+% Plots the frequency's domain plot of the filtered data signal
+frequency_domain(filtered_data, fs)
 
 % Plot results
 figure;
@@ -26,4 +29,4 @@ title('Filtered Data (Antialiasing Applied)');
 xlabel('Time (s)');
 ylabel('Amplitude');
 
-frequency_domain(filtered_data, fs)
+
