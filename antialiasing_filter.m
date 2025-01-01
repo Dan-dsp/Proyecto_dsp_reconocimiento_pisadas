@@ -23,35 +23,10 @@ function filtered_data = antialiasing_filter(raw_data, fs, fc)
     % Apply the filter using zero-phase filtering
     filtered_data = filtfilt(b, a, raw_data);
     
-    % Plot frequency response of the filter (optional)
+    % Plot frequency response of the filter
     figure;
     freqz(b, a, 1024, fs);
     title('Frequency Response of Antialiasing Filter');
 end
-
-% % Parameters
-% fs = 1000;  % Sampling frequency (Hz)
-% fc = 200;   % Cutoff frequency (Hz)
-% t = 0:1/fs:1-1/fs;  % Time vector for 1 second of data
-% 
-% % Example raw data: Mix of low and high-frequency signals
-% raw_data = sin(2*pi*50*t) + 0.5*sin(2*pi*300*t);
-% 
-% % Call the antialiasing filter function
-% filtered_data = antialiasing_filter_1(raw_data, fs, fc);
-
-% % Plot results
-% figure;
-% subplot(2, 1, 1);
-% plot(t, raw_data);
-% title('Raw Data');
-% xlabel('Time (s)');
-% ylabel('Amplitude');
-% 
-% subplot(2, 1, 2);
-% plot(t, filtered_data);
-% title('Filtered Data (Antialiasing Applied)');
-% xlabel('Time (s)');
-% ylabel('Amplitude');
 
 
