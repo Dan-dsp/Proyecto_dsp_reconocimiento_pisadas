@@ -18,7 +18,7 @@ function filtered_data = antialiasing_filter(raw_data, fs, fc)
     Wn = fc / (fs / 2);
     
     % Design a Butterworth filter (2nd order for smooth response)
-    [b, a] = butter(2, Wn, 'low');
+    [b, a] = butter(3, Wn, 'low');
     
     % Apply the filter using zero-phase filtering
     filtered_data = filtfilt(b, a, raw_data);
