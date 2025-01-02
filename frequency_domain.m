@@ -13,10 +13,10 @@ function [frequency_response, frequency_bins] = frequency_domain(data, fs)
     frequency_bins = f;
 
     % Plot the frequency domain
-    figure;
-    plot(f, P1);
-    title('Frequency Domain of the Signal');
-    xlabel('Frequency (Hz)');
-    ylabel('Amplitude');
-    grid on;
+    % figure;
+    % plot(f, P1);
+    % title('Frequency Domain of the Signal');
+    % xlabel('Frequency (Hz)');
+    % ylabel('Amplitude');
+    % grid on;
 end

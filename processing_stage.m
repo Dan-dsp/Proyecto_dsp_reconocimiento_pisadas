@@ -8,12 +8,20 @@ fs = 10000; % Sampling frequency (Hz)
 fc = 200; % Cutoff frequency (Hz)
 time = 0 : 1/fs : (1/fs) * (length(data) - 1); % Time vector for 1 second of data
 
-% Call the antialiasing filter function
+% FILTRADO ANTIALIASING
 filtered_data = antialiasing_filter(data, fs, fc);
 
-% Plot the two signals in data inspector
-data_inspector(data, filtered_data, fs);
+% OBTENCIÓN DE LA RESPUESTA EN FRECUENCIA DE LA SEÑAL Y LA SEÑAL FILTRADA
+[data_frequency_response, data_y_bins] = frequency_domain(data, fs);
+[filtered_data_frequency_response, filtered_data_y_bins] = frequency_domain(filtered_data, fs);
 
+% GRAFICAR EN EL DATA INSPECTOR LA SEÑAL Y LA SEÑAL FILTRADA EN EL DOMINIO
+% DEL TIEMPO
+data_inspector('time', data, filtered_data, fs);
+
+% GRAFICAR EN EL DATA INSPECTOR LA SEÑAL Y LA SEÑAL FILTRADA EN EL DOMINIO
+% DE LA FRECUENCIA
+data_inspector('frequency', data_frequency_response, filtered_data_frequency_response, data_y_bins);
 
 % % Plots the frequency's domain plot of the data signal
 % frequency_domain(data, fs)

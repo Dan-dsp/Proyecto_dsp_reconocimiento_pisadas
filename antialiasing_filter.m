@@ -1,19 +1,9 @@
 function filtered_data = antialiasing_filter(raw_data, fs, fc)
     % ANTIALIASING_FILTER - Low-pass filter for antialiasing
-    % 
-    % Inputs:
-    %   raw_data - Input signal (vector)
-    %   fs       - Sampling frequency (Hz)
-    %   fc       - Cutoff frequency (Hz, must be less than fs/2)
-    %
-    % Output:
-    %   filtered_data - Filtered signal
-    
     % Validate cutoff frequency
     if fc >= fs/2
         error('Cutoff frequency must be less than Nyquist frequency (fs/2).');
     end
-    
     % Normalize cutoff frequency to Nyquist
     Wn = fc / (fs / 2);
     
@@ -28,5 +18,3 @@ function filtered_data = antialiasing_filter(raw_data, fs, fc)
     freqz(b, a, 1024, fs);
     title('Frequency Response of Antialiasing Filter');
 end
-
-
