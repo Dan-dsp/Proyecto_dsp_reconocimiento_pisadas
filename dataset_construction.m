@@ -8,7 +8,7 @@ max_traces = 10; % Maximum number of traces to check
 person_ids = [1, 2, 3]; % List of person IDs to process
 
 % Initialize an empty cell array for the new data
-newCellArray = cell(max_traces, numel(person_ids));
+new_data_set = cell(max_traces, numel(person_ids));
 
 % Loop through each person ID
 for col = 1:numel(person_ids)
@@ -26,8 +26,8 @@ for col = 1:numel(person_ids)
 
             % Add the data to the corresponding cell in the array
             % newCellArray{trace_num, col} = filtered_data;
-            
-            newCellArray{trace_num, col} = current_data;
+
+            new_data_set{trace_num, col} = current_data;
         catch
             % Stop if an error occurs (e.g., trace number out of bounds)
             disp(['Error or no data found for person ', num2str(person_id), ...
@@ -46,7 +46,7 @@ fullFilePath = fullfile(folderPath, fileName); % Combine folder path and file na
 save(fullFilePath, 'new_data_set');
 
 % Display the resulting cell array
-disp(newCellArray);
+disp(new_data_set);
 
 
 
