@@ -45,7 +45,6 @@ function data_inspector(domain, data, filtered_data, fs_or_bins)
         Simulink.sdi.view
         % Save the SDI session
         Simulink.sdi.save(fullPath);
-        
 end
 
 

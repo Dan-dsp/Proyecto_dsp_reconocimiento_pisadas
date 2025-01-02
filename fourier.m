@@ -1,17 +1,3 @@
-% function [outputArg1,outputArg2] = fourier(inputArg1,inputArg2)
-% %FOURIER Summary of this function goes here
-% %   Detailed explanation goes here
-% outputArg1 = inputArg1;
-% outputArg2 = inputArg2;
-% end
-% 
-
-% function [outputArg1,outputArg2] = fourier(inputArg1,inputArg2)
-% %FOURIER Summary of this function goes here
-% %   Detailed explanation goes here
-% outputArg1 = inputArg1;
-% outputArg2 = inputArg2;
-% end
 
 % Parameters
 fs = 1000;             % Sampling frequency (Hz)
