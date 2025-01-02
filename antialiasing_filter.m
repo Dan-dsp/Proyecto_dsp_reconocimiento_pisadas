@@ -14,7 +14,7 @@ function filtered_data = antialiasing_filter(raw_data, fs, fc)
     filtered_data = filtfilt(b, a, raw_data);
     
     % Plot frequency response of the filter
-    figure;
-    freqz(b, a, 1024, fs);
-    title('Frequency Response of Antialiasing Filter');
+    % figure;
+    % freqz(b, a, 1024, fs);
+    % title('Frequency Response of Antialiasing Filter');
 end

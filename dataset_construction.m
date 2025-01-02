@@ -22,12 +22,10 @@ for col = 1:numel(person_ids)
 
             % Use the processing_stage_no_plot function to manipulate the signals
             % before saving them
-            % filtered_data = processing_stage_no_plot(current_data);
+            filtered_data = processing_stage_no_plot(current_data);
 
             % Add the data to the corresponding cell in the array
-            % newCellArray{trace_num, col} = filtered_data;
-
-            new_data_set{trace_num, col} = current_data;
+            new_data_set{trace_num, col} = filtered_data;
         catch
             % Stop if an error occurs (e.g., trace number out of bounds)
             disp(['Error or no data found for person ', num2str(person_id), ...

@@ -11,6 +11,8 @@ time = 0 : 1/fs : (1/fs) * (length(data) - 1); % Time vector for 1 second of dat
 
 % FILTRADO ANTIALIASING
 filtered_data = antialiasing_filter(data, fs, fc);
+% FILTRADO AVERAGING
+filtered_data = averaging_filter(filtered_data, 3);
 
 % OBTENCIÓN DE LA RESPUESTA EN FRECUENCIA DE LA SEÑAL Y LA SEÑAL FILTRADA
 [data_frequency_response, data_y_bins] = frequency_domain(data, fs);
