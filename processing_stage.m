@@ -1,11 +1,12 @@
 % OBTENCIÓN DE LA SEÑAL
 % read_footstep_trace_data(person_id = 1, sensor_number = 1, speed_scale = 7, amplification = 1, trace_number = 1)
-data = read_footstep_trace_data(1, 1, 7, 1, 1);
+data = read_footstep_trace_data(1, 1, 1, 1, 1);
 
 % Parameters
 % fs = 25600; % Sampling frequency (Hz)
-fs = 10000; % Sampling frequency (Hz)
-fc = 200; % Cutoff frequency (Hz)
+% Page 6, third paragraph of section 4
+fs = 1000; % Sampling frequency (Hz)
+fc = 100; % Cutoff frequency (Hz)
 time = 0 : 1/fs : (1/fs) * (length(data) - 1); % Time vector for 1 second of data
 
 % FILTRADO ANTIALIASING
