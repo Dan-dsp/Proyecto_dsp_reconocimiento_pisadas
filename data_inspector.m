@@ -29,7 +29,7 @@ function data_inspector(domain, data, filtered_data, fs_or_bins)
         gaits_frequencysRun.Name = "Gait_frequency_analysis";
         gaits_frequencysRun.Description = "This is the analysis of person's gait in frequency with its filtered signal";
         
-        % Simulink.sdi.setSubPlotLayout(2,1);
+        % Simulink.sdi.setSubPlotLayout(1,1);
         % plotOnSubPlot(filtered_data_ts,2,1,true);
 
         add(gaits_frequencysRun,"vars", data_ts, filtered_data_ts);
