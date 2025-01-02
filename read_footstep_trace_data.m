@@ -37,7 +37,5 @@ trace_num = trace_number;
 data = people{person_id}.Sen{sensor_num}.S{speed_scale}...
     {trace_num, amplification};
 
-
-
 end
 
