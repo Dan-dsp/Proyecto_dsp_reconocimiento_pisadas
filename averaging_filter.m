@@ -1,11 +1,11 @@
-function smoothed_data = averaging_filter(data, window_size)
-    % AVERAGING_FILTER - Simple moving average filter
-    % Inputs:
+function smoothed_data = averaging_filter(data)
+        % Inputs:
     %   data - Input signal (vector)
     %   window_size - Number of samples for averaging (scalar)
     % Output:
     %   smoothed_data - Filtered signal
     
+    window_size = 8;
     % Create averaging filter coefficients
     h = ones(1, window_size) / window_size;
     
