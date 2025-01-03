@@ -12,7 +12,7 @@ fc = 100; % Cutoff frequency (Hz)
 % FILTRADO ANTIALIASING
 filtered_data = antialiasing_filter(data, fs, fc);
 % FILTRADO AVERAGING
-filtered_data = averaging_filter(filtered_data, 3);
+filtered_data = averaging_filter(filtered_data);
 
 % OBTENCIÓN DE LA RESPUESTA EN FRECUENCIA DE LA SEÑAL Y LA SEÑAL FILTRADA
 [data_frequency_response, data_y_bins] = frequency_domain(data, fs);

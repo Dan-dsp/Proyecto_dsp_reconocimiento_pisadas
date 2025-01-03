@@ -5,7 +5,7 @@ function smoothed_data = averaging_filter(data)
     % Output:
     %   smoothed_data - Filtered signal
     
-    window_size = 8;
+    window_size = 3;
     % Create averaging filter coefficients
     h = ones(1, window_size) / window_size;
     
