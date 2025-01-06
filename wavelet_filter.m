@@ -10,7 +10,7 @@ function filtered_signal = wavelet_filter(signal,fs)
     [WT, F] = cwt(signal, fs, 'NumOctaves', No, 'VoicesPerOctave', Nv); 
     
     % Define amplitude threshold (experiment with this value)
-    amplitude_threshold = 0.07 * max(abs(WT(:))); % 10% of the max coefficient
+    amplitude_threshold = 0.1 * max(abs(WT(:))); % 10% of the max coefficient
     
     % Apply thresholding
     WT_filtered = WT; % Copy original coefficients
