@@ -1,4 +1,4 @@
-function antialiased_and_averaged_data = processing_stage_no_plot(data)
+function filtered_data = processing_stage_no_plot(data)
     % Parameters
     % fs = 25600; % Sampling frequency (Hz)
     % Page 6, third paragraph of section 4
@@ -7,10 +7,10 @@ function antialiased_and_averaged_data = processing_stage_no_plot(data)
     % time = 0 : 1/fs : (1/fs) * (length(data) - 1); % Time vector for 1 second of data
     
     % FILTRADO ANTIALIASING
-    antialiased_data = antialiasing_filter(data, fs, fc);
+    filtered_data = antialiasing_filter(data, fs, fc);
     % FILTRADO AVERAGING
-    antialiased_and_averaged_data = averaging_filter(antialiased_data);
+    filtered_data = averaging_filter(filtered_data);
     % FILTRADO WAVELET
-    
+    filtered_data = wavelet_filter(filtered_data, fs);
 end
 
