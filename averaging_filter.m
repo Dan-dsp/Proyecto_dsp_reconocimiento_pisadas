@@ -1,16 +1,16 @@
 function smoothed_data = averaging_filter(data)
-        % Inputs:
+    % Inputs:
     %   data - Input signal (vector)
-    %   window_size - Number of samples for averaging (scalar)
     % Output:
     %   smoothed_data - Filtered signal
     
-    window_size =20;
+    % Define the window size
+    window_size = 5;
+    
     % Create averaging filter coefficients
     h = ones(1, window_size) / window_size;
     
-    % Apply the filter
-    smoothed_data = filter(h, 1, data);
+    % Apply zero-phase filtering to eliminate phase shift
+    smoothed_data = filtfilt(h, 1, data);
 end
-
 

@@ -8,9 +8,9 @@ function antialiased_and_averaged_data = processing_stage_no_plot(data)
     
     % FILTRADO ANTIALIASING
     antialiased_data = antialiasing_filter(data, fs, fc);
-    % FILTRADO WAVELET
-    
     % FILTRADO AVERAGING
     antialiased_and_averaged_data = averaging_filter(antialiased_data);
+    % FILTRADO WAVELET
+    
 end
 
