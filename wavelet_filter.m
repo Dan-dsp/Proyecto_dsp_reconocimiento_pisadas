@@ -2,7 +2,7 @@ function filtered_signal = wavelet_filter(signal,fs)
     %WAVELET_FILTER Summary of this function goes here
     %   Detailed explanation goes here
     % wavelet_analysis(signal, fs, 20, 90);
-    No = 5;
+    No = 10;
     Nv = 32;
     
     % Apply Continuous Wavelet Transform
@@ -17,7 +17,7 @@ function filtered_signal = wavelet_filter(signal,fs)
     WT_filtered(abs(WT) < amplitude_threshold) = 0; % Zero out small coefficients
     
     % Step 2: Reconstruct the filtered signal in the desired frequency range (20–90 Hz)
-    filtered_signal = icwt(WT_filtered, [], F, [20 90], 'SignalMean', mean(signal));
+    filtered_signal = icwt(WT_filtered, [], F, [20 150], 'SignalMean', mean(signal));
 end
 
 % signal = read_footstep_trace_data(1, 1, 1, 1, 1);
