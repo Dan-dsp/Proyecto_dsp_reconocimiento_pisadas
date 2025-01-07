@@ -37,7 +37,7 @@ function data_inspector(domain, data, filtered_data, fs_or_bins)
     end
         % Specify the folder and file name
         folderPath = 'C:\Users\Daniel\OneDrive - correounivalle.edu.co\Univalle\09_Noveno_semestre\DSP\Proyecto_2\data_inspector';  % Replace with your desired folder path
-        fileName = 'Gait_data_1.mldatx';    % Desired file name
+        fileName = 'Gait_data.mldatx';    % Desired file name
         fullPath = fullfile(folderPath, fileName);  % Combine folder and file name
 
         Simulink.sdi.view

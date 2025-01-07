@@ -15,20 +15,23 @@ filtered_data = antialiasing_filter(data, fs, fc_l);
 % FILTRADO PASO ALTO
 filtered_data = high_pass_filter(filtered_data, fs, fc_h);
 % FILTRADO AVERAGING
-% filtered_data = averaging_filter(filtered_data);
+filtered_data = averaging_filter(filtered_data);
 % FILTRADO WAVELET
-filtered_data = wavelet_filter(filtered_data, fs);
+filtered_data_cwt = wavelet_filter(filtered_data, fs);
 % FILTRADO DWT
-% filtered_data = DWT_filter(filtered_data, fs);
+filtered_data_dwt = DWT_filter(filtered_data, fs);
 
 % OBTENCIÓN DE LA RESPUESTA EN FRECUENCIA DE LA SEÑAL Y LA SEÑAL FILTRADA
 [data_frequency_response, data_y_bins] = frequency_domain(data, fs);
-[filtered_data_frequency_response, filtered_data_y_bins] = frequency_domain(filtered_data, fs);
+[filtered_data_frequency_response_cwt, filtered_data_y_bins_cwt] = frequency_domain(filtered_data_cwt, fs);
+[filtered_data_frequency_response_dwt, filtered_data_y_bins_dwt] = frequency_domain(filtered_data_dwt, fs);
 
 % GRAFICAR EN EL DATA INSPECTOR LA SEÑAL Y LA SEÑAL FILTRADA EN EL DOMINIO
 % DEL TIEMPO
-data_inspector('time', data, filtered_data, fs);
+data_inspector('time', data, filtered_data_cwt, fs);
+data_inspector('time', filtered_data_cwt, filtered_data_dwt, fs);
 
 % GRAFICAR EN EL DATA INSPECTOR LA SEÑAL Y LA SEÑAL FILTRADA EN EL DOMINIO
 % DE LA FRECUENCIA
-data_inspector('frequency', data_frequency_response, filtered_data_frequency_response, data_y_bins);
+data_inspector('frequency', data_frequency_response, filtered_data_frequency_response_cwt, data_y_bins);
+data_inspector('frequency', data_frequency_response, filtered_data_frequency_response_dwt, data_y_bins);
