@@ -8,9 +8,13 @@ function filtered_data = processing_stage_no_plot(data)
     
     % FILTRADO ANTIALIASING
     filtered_data = antialiasing_filter(data, fs, fc);
+    % FILTRADO PASO ALTO
+    filtered_data = high_pass_filter(filtered_data, fs, fc_h);
     % FILTRADO AVERAGING
-    filtered_data = averaging_filter(filtered_data);
+    % filtered_data = averaging_filter(filtered_data);
     % FILTRADO WAVELET
     filtered_data = wavelet_filter(filtered_data, fs);
+    % FILTRADO DWT
+    % filtered_data = DWT_filter(filtered_data, fs);
 end
 

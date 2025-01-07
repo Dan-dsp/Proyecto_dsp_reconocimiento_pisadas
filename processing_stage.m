@@ -12,12 +12,14 @@ fc_l = 90; % Cutoff frequency (Hz)
 
 % FILTRADO ANTIALIASING
 filtered_data = antialiasing_filter(data, fs, fc_l);
-% FILTRADO AVERAGING
+% FILTRADO PASO ALTO
 filtered_data = high_pass_filter(filtered_data, fs, fc_h);
+% FILTRADO AVERAGING
+% filtered_data = averaging_filter(filtered_data);
 % FILTRADO WAVELET
-% filtered_data = wavelet_filter(filtered_data, fs);
+filtered_data = wavelet_filter(filtered_data, fs);
 % FILTRADO DWT
-
+% filtered_data = DWT_filter(filtered_data, fs);
 
 % OBTENCIÓN DE LA RESPUESTA EN FRECUENCIA DE LA SEÑAL Y LA SEÑAL FILTRADA
 [data_frequency_response, data_y_bins] = frequency_domain(data, fs);
