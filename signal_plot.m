@@ -1,11 +1,11 @@
-function signal_plot(signal, titulo, x_label, y_label)
+function signal_plot(axes, signal, titulo, x_label, y_label)
     fs = 1000;
     time = (0:length(signal)-1) / fs; % Vector de tiempo en segundos
     figure;
-    plot(time, signal);
-    title(titulo);
-    xlabel(x_label);
-    ylabel(y_label);
+    plot(axes, time, signal);
+    title(axes, titulo);
+    xlabel(axes, x_label);
+    ylabel(axes, y_label);
     grid on;
 end
 
