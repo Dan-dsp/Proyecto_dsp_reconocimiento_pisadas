@@ -21,6 +21,8 @@ filtered_data_cwt = wavelet_filter(filtered_data, fs);
 % FILTRADO DWT
 filtered_data_dwt = DWT_filter(filtered_data, fs);
 
+signal_plot(filtered_data_dwt, 'title', 'x_label', 'y_label');
+
 % OBTENCIÓN DE LA RESPUESTA EN FRECUENCIA DE LA SEÑAL Y LA SEÑAL FILTRADA
 [data_frequency_response, data_y_bins] = frequency_domain(data, fs);
 [filtered_data_frequency_response_cwt, filtered_data_y_bins_cwt] = frequency_domain(filtered_data_cwt, fs);

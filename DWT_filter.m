@@ -40,10 +40,10 @@ function filtered_signal = DWT_filter(signal, fs)
     % Gráficos de las señales
     % ============================
     
-    [data_frequency_response, data_y_bins] = frequency_domain(signal, fs);
-    [filtered_data_frequency_response, ~] = frequency_domain(filtered_signal, fs);
-    
-    data_inspector('frequency', data_frequency_response, filtered_data_frequency_response, data_y_bins);
+    % [data_frequency_response, data_y_bins] = frequency_domain(signal, fs);
+    % [filtered_data_frequency_response, ~] = frequency_domain(filtered_signal, fs);
+    % 
+    % data_inspector('frequency', data_frequency_response, filtered_data_frequency_response, data_y_bins);
     
     % figure;
     % subplot(2, 1, 1);
