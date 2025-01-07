@@ -5,3 +5,6 @@ function scalogram(signal, fs)
     title('Magnitude Scalogram of the Signal');
     colorbar;
 end
+
+
+

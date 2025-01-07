@@ -19,94 +19,68 @@ function filtered_signal = wavelet_filter(signal,fs)
     % Step 2: Reconstruct the filtered signal in the desired frequency range (20–90 Hz)
     filtered_signal = icwt(WT_filtered, [], F, [20 90], 'SignalMean', mean(signal));
 end
-% % 
-% % signal = read_footstep_trace_data(1,1,1,1,1);
+
+% 
+% % Parámetros de la señal
+% fs = 1000;
+% signal = read_footstep_trace_data(1,1,1,1,1);
+% 
+% % Descomponer con DWT
+% waveletType = 'sym8';    % Puedes probar 'db8', 'coif5', etc.
+% nLevels = 6;             % Número de niveles de descomposición
+% 
+% % wcoeffs  = vector de coeficientes concatenados
+% % L        = array con los tamaños de los coeficientes en cada nivel
+% [wcoeffs, L] = wavedec(signal, nLevels, waveletType);
+% 
+% % Umbral (similar a tu "0.1 * max(abs(WT(:)))")
+% % Aquí definimos un umbral como 10% del coeficiente máximo
+% globalThreshold = 0.05 * max(abs(wcoeffs));
+% 
+% % Aplica umbral "hard" o "soft". Ejemplo:
+% wcoeffs_thr = wthresh(wcoeffs, 's', globalThreshold);
+% % 's' => soft threshold
+% % 'h' => hard threshold
+% 
+% % Reconstruir la señal a partir de los coeficientes umbralizados
+% denoised_signal = waverec(wcoeffs_thr, L, waveletType);
+% 
+% % Graficar
+% figure
+% subplot(2,1,1)
+% plot(t, signal), title('Señal original con ruido')
+% subplot(2,1,2)
+% plot(t, denoised_signal), title('Señal denoised con umbral global')
+% 
+% 
+% [data_frequency_response, data_y_bins] = frequency_domain(signal, fs);
+% [filtered_data_frequency_response, filtered_data_y_bins] = frequency_domain(denoised_signal, fs);
+% 
+% data_inspector('frequency', data_frequency_response, filtered_data_frequency_response, data_y_bins);
+% 
+% % % Ejemplo usando wdenoise (Wavelet Toolbox)
 % % fs = 1000;
+% % signal = read_footstep_trace_data(1,1,1,1,1);
 % % 
-% % No = 5;
-% % Nv = 32;
+% % % Filtra linealmente en [20-90] Hz con un paso-banda de orden moderado
+% % f1 = 20; f2 = 90;
+% % [b,a] = butter(4, [f1, f2]/(fs/2), 'bandpass');
+% % bp_signal = filtfilt(b,a, signal);  % zero-phase
 % % 
-% % % Apply Continuous Wavelet Transform
-% % % Step 1: Perform the CWT
-% % [WT, F] = cwt(signal, fs, 'NumOctaves', No, 'VoicesPerOctave', Nv); 
+% % % Denosing wavelet (automático)
+% % % Por defecto usa 'db1', pero puedes elegir 'sym8', etc.
+% % clean_signal = wdenoise(bp_signal, 6, ...
+% %                         'Wavelet','sym8', ...
+% %                         'DenoisingMethod','SURE', ...
+% %                         'ThresholdRule','Soft');
 % % 
-% % % Rango de interés
-% % target_idx = (F >= 20 & F <= 90);
+% % % Visualizar
+% % t = (0:length(signal)-1)/fs;
+% % subplot(3,1,1), plot(t, signal), title('Original')
+% % subplot(3,1,2), plot(t, bp_signal), title('Bandpass 20-90 Hz')
+% % subplot(3,1,3), plot(t, clean_signal), title('Bandpass + Wavelet Denoise')
 % % 
-% % % Promedio de los coeficientes en el rango
-% % mean_coeffs = mean(abs(WT(target_idx, :)), 2);
+% % [data_frequency_response, data_y_bins] = frequency_domain(signal, fs);
+% % [filtered_data_frequency_response, filtered_data_y_bins] = frequency_domain(clean_signal, fs);
 % % 
-% % % Graficar para inspeccionar
-% % plot(F(target_idx), mean_coeffs);
-% % title('Amplitud Promedio de los Coeficientes');
-% % xlabel('Frecuencia (Hz)');
-% % ylabel('Amplitud');
-% % 
-% % 
-% % % signal = read_footstep_trace_data(1, 1, 1, 1, 1);
-% % % data = read_footstep_trace_data(1, 1, 1, 1, 1);
-% % % signal = processing_stage_no_plot(data);
-% % % fs = 1000;
-% % 
-% % % subplot(2,1,1)
-% % % plot(signal)
-% % % grid on
-% % % title("Original Data")
-% % % ylabel("Amplitude")
-% % % axis tight
-% % % 
-% % % subplot(2,1,2)
-% % % plot(filtered_signal)
-% % % grid on
-% % % title("Bandpass Filtered Reconstruction [20 90] Hz");
-% % % xlabel("Time (s)")
-% % % ylabel("Amplitude")
-% % % axis tight
-% % 
-% % 
-% 
-% 
-% signal = read_footstep_trace_data(1, 1, 1, 1, 1); % Leer señal
-% fs = 1000; % Frecuencia de muestreo
-% 
-% No = 5; % Número de octavas
-% Nv = 32; % Voces por octava
-% 
-% % Transformada Wavelet Continua
-% [WT, F] = cwt(signal, fs, 'NumOctaves', No, 'VoicesPerOctave', Nv); 
-% 
-% % Rango de interés
-% target_idx = (F >= 20 & F <= 90);
-% 
-% % Promedio de los coeficientes en el rango
-% mean_coeffs = mean(abs(WT(target_idx, :)), 2);
-% 
-% % Factor de compensación
-% max_coeff = max(mean_coeffs); % Máxima amplitud en el rango
-% compensation_factors = max_coeff ./ mean_coeffs;
-% 
-% % Aplicar factor de compensación
-% WT(target_idx, :) = WT(target_idx, :) .* compensation_factors;
-% 
-% % Reconstruir la señal
-% filtered_signal = icwt(WT, [], F, [20 90], 'SignalMean', mean(signal));
-% 
-% % Graficar resultados
-% t = (0:length(signal)-1) / fs;
-% figure;
-% subplot(2, 1, 1);
-% plot(t, signal);
-% title('Señal Original');
-% xlabel('Tiempo (s)');
-% ylabel('Amplitud');
-% 
-% subplot(2, 1, 2);
-% plot(t, filtered_signal);
-% title('Señal Reconstruida con Amplitud Uniforme (20–90 Hz)');
-% xlabel('Tiempo (s)');
-% ylabel('Amplitud');
-% 
-% [data, ~] = frequency_domain(signal, fs);
-% [filtered_data, filtered_data_y_bins] = frequency_domain(filtered_signal, fs);
-% 
-% data_inspector('frequency', data, filtered_data,filtered_data_y_bins);
+% % data_inspector('frequency', data_frequency_response, filtered_data_frequency_response, data_y_bins);
