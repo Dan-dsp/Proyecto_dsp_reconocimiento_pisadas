@@ -1,13 +1,11 @@
-signal = read_footstep_trace_data(1, 1, 1, 1, 1);
-% 
-% function signal_plot(signal, 'señal', 'tiempo', 'amplitud');
-    % time = length(signal);
-    % figure;
-    % plot(time, signal);
-    % title('señal');
-    % xlabel('tiempo');
-    % ylabel('amplitud');
-    % grid on;
-% end
+function signal_plot(signal, titulo, x_label, y_label);
+    time = (0:length(signal)-1) / fs; % Vector de tiempo en segundos
+    figure;
+    plot(time, signal);
+    title('señal');
+    xlabel('tiempo');
+    ylabel('amplitud');
+    grid on;
+end
 
-scalogram(signal, 1000);
+% scalogram(signal, 1000);
