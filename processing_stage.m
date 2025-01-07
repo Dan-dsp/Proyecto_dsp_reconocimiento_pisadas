@@ -6,15 +6,18 @@ data = read_footstep_trace_data(1, 1, 1, 1, 1);
 % fs = 25600; % Sampling frequency (Hz)
 % Page 6, third paragraph of section 4
 fs = 1000; % Sampling frequency (Hz)
-fc = 90; % Cutoff frequency (Hz)
+fc_h = 20; % Cutoff frequency (Hz)
+fc_l = 90; % Cutoff frequency (Hz)
 % time = 0 : 1/fs : (1/fs) * (length(data) - 1); % Time vector for 1 second of data
 
 % FILTRADO ANTIALIASING
-filtered_data = antialiasing_filter(data, fs, fc);
+filtered_data = antialiasing_filter(data, fs, fc_l);
 % FILTRADO AVERAGING
-filtered_data = averaging_filter(filtered_data);
+filtered_data = high_pass_filter(filtered_data, fs, fc_h);
 % FILTRADO WAVELET
-filtered_data = wavelet_filter(filtered_data, fs);
+% filtered_data = wavelet_filter(filtered_data, fs);
+% FILTRADO DWT
+
 
 % OBTENCIÓN DE LA RESPUESTA EN FRECUENCIA DE LA SEÑAL Y LA SEÑAL FILTRADA
 [data_frequency_response, data_y_bins] = frequency_domain(data, fs);

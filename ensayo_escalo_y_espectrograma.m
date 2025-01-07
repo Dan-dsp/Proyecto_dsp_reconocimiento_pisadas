@@ -80,51 +80,6 @@ ylabel('Error');
 
 
 
-% % Parámetros iniciales
-% fs = 1000; % Frecuencia de muestreo
-% amplification = 1; % Factor de amplificación
-% speed_scale = 1; % Velocidad
-% sensor_number = 1; % Sensor
-% 
-% % Longitud inicial prealocada
-% preallocated_length = 45506;
-% 
-% % Iterar sobre las primeras 3 personas
-% for person_id = 1:3
-%     % Inicializar señal acumulativa con ceros
-%     accumulated_signal = zeros(1, preallocated_length);
-% 
-%     % Sumar trazas del 1 al 10
-%     for trace_num = 1:10
-%         % Leer datos
-%         data = read_footstep_trace_data(person_id, sensor_number, speed_scale, amplification, trace_num);
-%         data = data(:)'; % Convertir data a vector fila
-%         current_length = length(data);
-% 
-%         % Ajustar longitudes para que coincidan
-%         if current_length > length(accumulated_signal)
-%             % Extender accumulated_signal con ceros si data es más larga
-%             accumulated_signal = [accumulated_signal, zeros(1, current_length - length(accumulated_signal))];
-%         elseif current_length < length(accumulated_signal)
-%             % Extender data con ceros si accumulated_signal es más larga
-%             data = [data, zeros(1, length(accumulated_signal) - current_length)];
-%         end
-% 
-%         % Sumar punto por punto
-%         accumulated_signal = accumulated_signal + data;
-%     end
-% 
-%     % Generar espectrograma
-%     figure;
-%     spectrogram(accumulated_signal, 256, 128, 256, fs, 'yaxis');
-%     title(['Spectrogram for Person ', num2str(person_id)]);
-%     colorbar;
-% 
-%     % Generar escalograma
-%     scalogram(accumulated_signal, fs);
-%     title(['Scalogram for Person ', num2str(person_id)]);
-% end
-
 
 % % Parámetros iniciales
 % fs = 1000; % Frecuencia de muestreo
