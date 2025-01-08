@@ -8,7 +8,7 @@ max_traces = 10; % Maximum number of traces to check
 person_ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; % List of person IDs to process
 
 % Initialize an empty cell array for the new data
-the_data_set = cell(max_traces, numel(person_ids));
+new_new_data_set = cell(max_traces, numel(person_ids));
 
 % Loop through each person ID
 for col = 1:numel(person_ids)
@@ -25,7 +25,7 @@ for col = 1:numel(person_ids)
             filtered_data = processing_stage_no_plot(current_data);
 
             % Add the data to the corresponding cell in the array
-            the_data_set{trace_num, col} = filtered_data;
+            new_new_data_set{trace_num, col} = filtered_data;
         catch
             % Stop if an error occurs (e.g., trace number out of bounds)
             disp(['Error or no data found for person ', num2str(person_id), ...
@@ -37,14 +37,14 @@ end
 
 % Save the array to a specific folder path
 folderPath = 'C:\Users\Daniel\OneDrive - correounivalle.edu.co\Univalle\09_Noveno_semestre\DSP\Proyecto_2\data_set'; % Replace with your desired folder path
-fileName = 'the_data_set.mat';    % Desired file name
+fileName = 'new_new_data_set.mat';    % Desired file name
 fullFilePath = fullfile(folderPath, fileName); % Combine folder path and file name
 
 % Save the data
-save(fullFilePath, 'the_data_set');
+save(fullFilePath, 'new_new_data_set');
 
 % Display the resulting cell array
-disp(the_data_set);
+disp(new_new_data_set);
 
 
 
