@@ -6,7 +6,7 @@ function signal_plot(axes, signal, titulo, x_label, y_label)
     title(axes, titulo);
     xlabel(axes, x_label);
     ylabel(axes, y_label);
-    grid on;
+    grid(axes, 'on');
 end
 
 % function signal_plot(signal, titulo, x_label, y_label)
