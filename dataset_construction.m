@@ -5,7 +5,7 @@ sensor_num = 1;
 speed_scale = 1;
 amplification = 1;
 max_traces = 10; % Maximum number of traces to check
-person_ids = [1, 2, 3]; % List of person IDs to process
+person_ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; % List of person IDs to process
 
 % Initialize an empty cell array for the new data
 the_data_set = cell(max_traces, numel(person_ids));
