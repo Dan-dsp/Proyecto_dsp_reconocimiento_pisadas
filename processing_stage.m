@@ -1,6 +1,6 @@
 % OBTENCIÓN DE LA SEÑAL
 % read_footstep_trace_data(person_id = 1, sensor_number = 1, speed_scale = 7, amplification = 1, trace_number = 1)
-data = read_footstep_trace_data(1, 1, 1, 1, 1);
+data = read_footstep_trace_data(1, 1, 1, 1, 2);
 
 % Parameters
 % fs = 25600; % Sampling frequency (Hz)
