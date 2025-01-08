@@ -25,7 +25,7 @@ num_clusters = num_people; % Número de clusters (igual al número de personas)
 features = [features, idx];
 
 % Guardar el modelo K-Means
-save('trained_kmeans_model.mat', 'idx', 'C', 'num_clusters');
+save('trained_kmeans_model.mat', 'C', 'num_clusters');
 disp('El modelo K-Means entrenado ha sido guardado en trained_kmeans_model.mat');
 
 % Visualizar los resultados del clustering
@@ -51,8 +51,16 @@ tabulate(idx);
 k = 3;
 
 % Llamar al modelo de distancia de Mahalanobis y obtener la precisión
-accuracy = mahalanobis_model(train_features, train_labels, test_features, test_labels);
-disp(['Precisión del modelo de Mahalanobis: ', num2str(accuracy * 100), '%']);
+accuracy_mahalanobis = mahalanobis_model(train_features, train_labels, test_features, test_labels);
+disp(['Precisión del modelo de Mahalanobis: ', num2str(accuracy_mahalanobis * 100), '%']);
+
+% Llamar al modelo KNN y obtener la precisión
+accuracy_knn = knn_model(train_features, train_labels, test_features, test_labels, k);
+disp(['Precisión del modelo KNN: ', num2str(accuracy_knn * 100), '%']);
+
+% Llamar al modelo Euclidiano y obtener la precisión
+accuracy_euclidean = euclidean_model(train_features, train_labels, test_features, test_labels);
+disp(['Precisión del modelo Euclidiano: ', num2str(accuracy_euclidean * 100), '%']);
 
 
 
